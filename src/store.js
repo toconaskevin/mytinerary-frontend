@@ -4,18 +4,9 @@ import rootReducer from './reducers';
 import thunk from 'redux-thunk';
 
 const initState = {
-  cities: [{
-    id: 1,
-    name: "Buenos Aires",
-    country: "Argentina"
-  }],
-  itineraries: [{
-    author: "Carlos",
-    rating: "8",
-    duration: "13",
-    cost: "961",
-    hashtags: [{0: "Sports"}, {1: "Lakes"}]
-  }]
+  cities: null,
+  itineraries: null,
+  isLoading: true
 }
 
 const middleware = [thunk];

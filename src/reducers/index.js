@@ -4,5 +4,5 @@ import itineraryReducer from './itineraryReducer';
 
 export default combineReducers({
   city: cityReducer,
-  itinerary: itineraryReducer
+  itinerary: itineraryReducer,
 });

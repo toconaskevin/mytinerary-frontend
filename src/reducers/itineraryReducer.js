@@ -1,22 +1,8 @@
 import { GET_ITEMS, GET_ITINERARIES } from '../actions/types';
 
 const initialState = {
-  itineraries: [
-    {
-    author: "Kevin",
-    rating: "22",
-    duration: "8",
-    cost: "1353",
-    hashtags: [{0: "Food"}, {1: "Drink"}]
-    },
-    {
-    author: "Pedro",
-    rating: "31",
-    duration: "6",
-    cost: "654",
-    hashtags: [{0: "Football"}, {1: "Parks"}]
-    }
-  ]
+  itineraries: null,
+  isLoading: true
 }
 
 export default function(state = initialState, action) {
@@ -24,12 +10,14 @@ export default function(state = initialState, action) {
     case GET_ITEMS:
       return {
         ...state,
-        itineraries: action.payload
+        itineraries: action.payload,
+        isLoading: action.isLoading
       }
     case GET_ITINERARIES:
       return {
         ...state,
-        itineraries: action.payload
+        itineraries: action.payload,
+        isLoading: action.isLoading
       }
     default:
       return state;

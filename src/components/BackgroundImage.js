@@ -13,23 +13,44 @@ class BackgroundImage extends Component {
             padding: '5%',
             textShadow: '5px 5px 10px #000'
         }
+        
+        // console.log("locatioL : "+window.location.pathname);
 
-        return(
-            <div>
-                {this.props.cities.map((city) => (
-                    <div style={
-                        {
-                            backgroundImage: `url(${city.img})`, 
-                            backgroundPosition: 'center', 
-                            backgroundSize: '100%'
-                        }}>
-                        <Link to={'/cities/'+city._id+'/itineraries'} style={{textDecoration: 'none'}}>
-                            <p style={textStyle}>{city.name} - {city.country}</p>
-                        </Link>
-                    </div>
-                ))}
-            </div>
-        );
+        if (window.location.pathname.includes("itineraries")) {
+            console.log("contain itineraries");
+            return(
+                <div>
+                    {this.props.cities ? this.props.cities.map((city, id) => (
+                        <div key={id} style={
+                            {
+                                backgroundImage: `url(${city.img})`, 
+                                backgroundPosition: 'center', 
+                                backgroundSize: '100%'
+                            }}>
+                                <p style={textStyle}>{city.name} - {city.country}</p>
+                        </div>
+                    )): <div></div>}
+                </div>
+            );
+        } else {
+            console.log("not contain itineraries");
+            return(
+                <div>
+                    {this.props.cities ? this.props.cities.map((city, id) => (
+                        <div key={id} style={
+                            {
+                                backgroundImage: `url(${city.img})`, 
+                                backgroundPosition: 'center', 
+                                backgroundSize: '100%'
+                            }}>
+                            <Link to={'/cities/'+city._id+'/itineraries'} style={{textDecoration: 'none'}}>
+                                <p style={textStyle}>{city.name} - {city.country}</p>
+                            </Link>
+                        </div>
+                    )): <div></div>}
+                </div>
+            );
+        }
     }
 }
 

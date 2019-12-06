@@ -5,8 +5,6 @@ import BackgroundImage from './BackgroundImage';
 import { borderWindow } from './borderWindowsStyle';
 import store from '../store';
 import TitleComponent from './TitleComponent';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap';
 import BottomHomeButton from './BottomHomeButton';
 
 class Cities extends Component {
@@ -19,18 +17,36 @@ class Cities extends Component {
         
         const cities = this.props.cities;
 
-        return(
-            <div style={borderWindow}>
-                <TitleComponent title='CITIES'/>
-                <BackgroundImage cities={cities}/>
-                <BottomHomeButton/>
-            </div>
-        );
+        // console.log("loading de cities: " + this.props.isLoading);
+        
+        // if (this.props.isLoading) {
+        //     return(
+        //         <div style={borderWindow}>
+        //             <TitleComponent title='CITIES'/>
+        //             <div className="d-flex justify-content-center mt-5">
+        //                 <div className="spinner-border" role="status">
+        //                     <span className="sr-only">Loading...</span>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     )
+        // } else {
+            return(
+                <div style={borderWindow}>
+                    <TitleComponent title='CITIES'/>
+                    <BackgroundImage cities={cities}/>
+                    <BottomHomeButton/>
+                </div>
+            );
+        // }
     }
 }
 
 const mapStateToProps = state => {
-  return {cities: state.city.cities}
+    return {
+        cities: state.city.cities,
+        // isLoading: state.city.isLoading
+    }
 };
 
 export default connect(mapStateToProps, {getCities})(Cities);

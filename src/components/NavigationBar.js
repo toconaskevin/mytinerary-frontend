@@ -43,25 +43,25 @@ class NavigationBar extends Component {
         // }
 
         return(
-            <ul class="nav nav-pills fixed-top p-1 bg-white d-flex justify-content-between mr-0 ml-2">
-            <li class="nav-item dropdown">
-                <span class="navbar-brand" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <ul className="nav nav-pills fixed-top p-1 bg-white d-flex justify-content-between mr-0 ml-2">
+            <li className="nav-item dropdown">
+                <span className="navbar-brand" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <img className="rounded-circle" width="30" height="30" src="http://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-101-e1485815933252.jpg" alt='profile user avatar'/>
                 </span>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">My Profile</a>
-                <a class="dropdown-item" href="#">Configurations</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <div className="dropdown-menu">
+                <a className="dropdown-item" href="#">My Profile</a>
+                <a className="dropdown-item" href="#">Configurations</a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="#">Logout</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <span class="navbar-brand " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <li className="nav-item dropdown">
+                <span className="navbar-brand " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <img className="rounded" width="35" height="35" src="https://cdn3.iconfinder.com/data/icons/mobile-friendly-ui/100/menu-512.png" alt='hamburger icon'/>
                 </span>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="/cities">Cities</a>
-                <a class="dropdown-item" href="#">Activities</a>
+                <div className="dropdown-menu">
+                <a className="dropdown-item" href="/cities">Cities</a>
+                <a className="dropdown-item" href="#">Activities</a>
                 </div>
             </li>
             </ul>
