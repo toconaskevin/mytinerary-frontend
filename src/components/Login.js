@@ -26,28 +26,47 @@ export default class Login extends Component {
         window.location.href = "http://localhost:5000/api/auth/google";
     }
 
+    onSubmit = async () => {
+
+        var user = this.state;
+
+        await fetch('http://localhost:5000/api/users/login', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+        .then(json => (
+            localStorage.setItem('sessionKey', json.token),
+            localStorage.setItem('firstName', json.user.firstName),
+            localStorage.setItem('lastName', json.user.lastName),
+            localStorage.setItem('email', json.user.email)
+        )).catch(error => console.error('Error: ', error))
+
+        if(localStorage.getItem('sessionKey') != null) {
+            window.location.href = window.location.origin;
+        }
+    }
+
     render() {
         return (
             <div style={borderWindow}>
                 <div className='d-flex flex-column'>
                     <h2 className='text-center mb-4'>Login</h2>
                     <div className='jumbotron'>
-                        <form className="d-flex flex-column w-100" action="">
-                            <label className='d-flex justify-content-center' htmlFor="">
-                                <input className='form-control' placeholder='Username' name="userName" value={this.state.userName} type="text" onChange={this.onChange}/>
-                            </label>
+                        <form className="d-flex flex-column w-100">
+                                <input className='form-control mb-2' placeholder='Username' name="userName" value={this.state.userName} type="text" onChange={this.onChange}/>
 
-                            <label className='d-flex justify-content-center' htmlFor="">
-                                <input className='form-control' placeholder='Password' name="password" value={this.state.password} type="password" onChange={this.onChange}/>
+                                <input className='form-control mb-2' placeholder='Password' name="password" value={this.state.password} type="password" onChange={this.onChange}/>
+                            
+                            <label className='mt-3' >
+                                <input className='mr-2' type='checkbox'/>
+                                Remember me
                             </label>
                         </form>
-                        <label className='mt-3' >
-                            <input className='mr-2' type='checkbox'/>
-                            Remember me
-                        </label>
-                        <div className='d-flex justify-content-center'>
-                            <button className='btn btn-primary w-25 mt-1'>OK</button>
-                        </div>
+                        <button onClick={this.onSubmit} className='btn btn-primary w-25 mt-1'>OK</button>
+
                     </div>
                     <button className='btn btn-secondary d-flex align-items-center pl-4' onClick={this.signGoogle}>
                         <img className='mr-3' width='15%' height='15%' src='https://icon-library.net/images/google-g-icon/google-g-icon-26.jpg'/>

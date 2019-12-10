@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from './Carousel';
 import { borderWindow } from './borderWindowsStyle';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap'
 
 class Home extends Component {
 
-  render() {
+  getSession = () => {
+    alert(localStorage.getItem('sessionKey'))
+  }
 
+  clearSession = () => {
+    localStorage.removeItem('sessionKey')
+    alert('Session Key Deleted')
+  }
+
+  render() {
     return (
       <div style={borderWindow}>
         <div className='d-flex flex-column'>
@@ -25,6 +31,10 @@ class Home extends Component {
             <Link to='/cities' style={{width: '25%', height: '25%'}}>
               <img className='img-fluid rounded-circle' src='https://i.ibb.co/4TffgrZ/circled-right-2.png' alt="button start"/>
             </Link>
+          </div>
+          <div>
+            <button onClick={this.getSession}>Token</button>
+            <button onClick={this.clearSession}>Clear Token</button>
           </div>
           <br/>
           <p style={{fontWeight: 'bold'}}>Popular MYtineraries</p>
